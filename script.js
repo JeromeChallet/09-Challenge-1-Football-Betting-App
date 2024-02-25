@@ -55,5 +55,38 @@ const game = {
   },
 };
 
-const players1 = [];
-const players2 = [];
+// 1
+// const players1 = [...game.players[0]];
+// const players2 = [...game.players[1]];
+//array destructuting
+const [players1, players2] = game.players;
+console.log(players1, players2);
+// 2 rest pattern
+const [gk, ...fieldPlayers] = players1;
+// 3
+const allPlayers = [...players1, ...players2];
+// 4
+const players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
+// 5
+const { team1: team1Odds, x: drawOdds, team2: team2Odds } = game.odds;
+// const {
+//   odds: { team1, x, team2 },
+// } = game;
+// 6
+const printGoals = function (...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`);
+};
+printGoals("Davies", "Muller", "Lewandowski", "Kimmich");
+printGoals(...game.scored);
+
+// 7
+team1Odds < team2Odds && console.log("team 1 is more likely to win");
+team2Odds < team1Odds && console.log("team 2 is more likely to win");
+
+console.log("gk:", gk);
+console.log("fieldPlayers:", fieldPlayers);
+console.log("allPlayers:", allPlayers);
+console.log("players1Final:", players1Final);
+console.log("team1Odds, drawOdds, team2Odds:", team1Odds, drawOdds, team2Odds);
+console.log("playersScoring", playersScoring);
